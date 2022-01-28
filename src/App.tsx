@@ -1,10 +1,17 @@
 import React, { FC } from "react";
+import { Routes, Route } from 'react-router-dom';
+
+import { ProfilePage, UsersPage } from './pages';
 
 const App: FC = () => {
 	return (
-		<div>
-			<h1>Hello, friend!</h1>
-		</div>
+		<>
+			<Routes>
+				<Route path='/users' element={<UsersPage />} />
+				<Route path='/profile' element={<ProfilePage />} />
+			</Routes>
+		</>
+
 	);
 };
 
