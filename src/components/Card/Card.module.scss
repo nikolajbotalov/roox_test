@@ -1,0 +1,51 @@
+.Card {
+	display: flex;
+	justify-content: space-between;
+	width: 420px;
+	margin-bottom: 14px;
+	background: #F3F3F3;
+	border-radius: 8px;
+
+	&:last-child {
+		margin-bottom: 10px;
+	}
+
+	&__Info {
+		display: flex;
+		flex-direction: column;
+		padding: 10px;
+	}
+
+	&__Text {
+		font-family: 'Roboto', sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 11px;
+		line-height: 13px;
+		color: #A3A3A3;
+
+		&:not(:last-child) {
+			margin-bottom: 7px;
+		}
+	}
+
+	&__Data {
+		font-family: 'Roboto', sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 11px;
+		line-height: 13px;
+		color: #000000;
+	}
+
+	&__Link {
+		font-family: 'Roboto', sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 12px;
+		line-height: 14px;
+		color: #4B51EF;
+		padding: 49px 10px 0 0;
+		text-decoration: none;
+	}
+}

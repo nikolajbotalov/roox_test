@@ -1,0 +1,17 @@
+.Users {
+	padding: 19px 62px 0 31px;
+
+	&__Title {
+		font-weight: bold;
+		font-size: 14px;
+		line-height: 16px;
+		margin-bottom: 17px;
+	}
+
+	&__Count {
+		display: block;
+		font-size: 12px;
+		line-height: 14px;
+		margin-bottom: 25px;
+	}
+}
