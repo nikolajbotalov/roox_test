@@ -1,0 +1,23 @@
+body,
+div,
+input,
+button,
+form,
+h1 {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+h1,
+span,
+input,
+button {
+	font-family: "Roboto", sans-serif;
+	font-style: normal;
+}
+
+button {
+	cursor: pointer;
+	border: 1px solid #d3d3d3;
+}
