@@ -2,7 +2,7 @@ import React from 'react';
 
 import type { IUser } from '../../types/User';
 
-import { Title } from '../../shared'
+import { Title, Loader } from '../../shared'
 import { Card } from '../../components';
 
 import styles from './Users.module.scss';
@@ -23,7 +23,7 @@ export const Users = ({ users, isLoading }: IProps) => {
 						users?.map(user => (
 							<Card key={user.id} name={user.name} city={user.address.city} company={user.company.name} />
 						))
-					) : null
+					) : <Loader />
 			}
 		</div>
 	)
