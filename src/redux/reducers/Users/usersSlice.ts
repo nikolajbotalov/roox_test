@@ -8,7 +8,7 @@ const initialState: IUsersState = {
 };
 
 const usersSlice = createSlice({
-	name: 'recording',
+	name: 'users',
 	initialState,
 	reducers: {},
 	extraReducers: {
