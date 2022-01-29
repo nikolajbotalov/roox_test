@@ -1,1 +1,2 @@
-export { fetchGetUsers, usersReducer } from './Users';
+export * from './Users';
+export * from './Profile';
