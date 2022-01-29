@@ -2,6 +2,12 @@ import React from 'react';
 
 import { UsersContainer } from '../../containers'
 
-export const UsersPage = () => {
-	return <UsersContainer />;
+import type { ICurrentProfile } from '../../types/CurrentProfile';
+
+interface IProps {
+	currentProfileOption: ICurrentProfile;
+}
+
+export const UsersPage = ({ currentProfileOption }: IProps) => {
+	return <UsersContainer currentProfileOption={currentProfileOption} />;
 };

@@ -3,27 +3,28 @@ export interface IUser {
 	name: string;
 	username: string;
 	email: string;
-	address: IUserAddress;
+	address: IUserAddress | undefined;
 	phone: string;
 	website: string;
-	company: IUserCompany;
+	company: IUserCompany | null;
+	comment: string;
 }
 
-interface IUserAddress {
+export interface IUserAddress {
 	street: string;
-	suite: string;
-	city: string;
-	zipcode: string;
-	geo: IUserAddressGeo
+	suite?: string;
+	city?: string;
+	zipcode?: string;
+	geo?: IUserAddressGeo
 }
 
-interface IUserAddressGeo {
-	lat: string;
-	lng: string;
+export interface IUserAddressGeo {
+	lat?: string;
+	lng?: string;
 }
 
 interface IUserCompany {
-	name: string;
-	catchPhrase: string;
-	bs: string;
+	name?: string;
+	catchPhrase?: string;
+	bs?: string;
 }

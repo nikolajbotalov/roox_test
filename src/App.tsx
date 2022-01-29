@@ -13,7 +13,7 @@ const App: FC = () => {
 		<div className={styles.Wrapper}>
 			<Sort />
 			<Routes>
-				<Route path='/' element={<UsersPage />} />
+				<Route path='/' element={<UsersPage currentProfileOption={{ setCurrentProfile, currentProfile }} />} />
 				<Route path='profile/:userId' element={<ProfilePage currentProfileOption={{ setCurrentProfile, currentProfile }} />} />
 			</Routes>
 		</div>
