@@ -3,17 +3,17 @@ export interface IUser {
 	name: string;
 	username: string;
 	email: string;
-	address: IUserAddress | undefined;
+	address: IUserAddress;
 	phone: string;
 	website: string;
-	company: IUserCompany | null;
+	company: IUserCompany;
 	comment: string;
 }
 
 export interface IUserAddress {
 	street: string;
 	suite?: string;
-	city?: string;
+	city: string;
 	zipcode?: string;
 	geo?: IUserAddressGeo
 }
@@ -24,7 +24,7 @@ export interface IUserAddressGeo {
 }
 
 interface IUserCompany {
-	name?: string;
+	name: string;
 	catchPhrase?: string;
 	bs?: string;
 }

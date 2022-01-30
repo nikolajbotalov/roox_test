@@ -10,7 +10,22 @@ const initialState: IUsersState = {
 const usersSlice = createSlice({
 	name: 'users',
 	initialState,
-	reducers: {},
+	reducers: {
+		sortByCity: (state) => {
+			if (state.users !== null) {
+				state.users.sort((prev, next) => (
+					prev.address.city > next.address.city ? 1 : -1
+				))
+			}
+		},
+		sortByCompany: (state) => {
+			if (state.users !== null) {
+				state.users.sort((prev, next) => (
+					prev.company.name > next.company.name ? 1 : -1
+				))
+			}
+		},
+	},
 	extraReducers: {
 		[fetchGetUsers.pending.type]: (state) => {
 			state.isLoading = true;
@@ -26,6 +41,7 @@ const usersSlice = createSlice({
 });
 
 export const usersReducer = usersSlice.reducer;
+export const { sortByCity, sortByCompany } = usersSlice.actions;
 
 export interface IUsersState {
 	isLoading: boolean;
