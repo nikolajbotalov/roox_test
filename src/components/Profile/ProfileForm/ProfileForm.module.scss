@@ -43,12 +43,17 @@
 		color: rgba(0, 0, 0, 0.3) !important;
 	}
 
+	&__error {
+		border: 1px solid #D91313 !important;
+	}
+
 	&__submit {
-		margin-left: 353px;
+		position: absolute;
+		top: 540px;
+		margin-left: 346px;
 		margin-right: 41px;
 		padding: 5px 10px;
 		background: #52CF4F;
-		
 		border-radius: 5px;
 		font-family: 'Roboto', sans-serif;
 		font-style: normal;

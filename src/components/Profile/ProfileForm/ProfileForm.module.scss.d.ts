@@ -2,6 +2,7 @@
 // Please do not change this file!
 interface CssExports {
   'ProfileForm': string;
+  'ProfileForm__error': string;
   'ProfileForm__field': string;
   'ProfileForm__inactiveSubmit': string;
   'ProfileForm__submit': string;

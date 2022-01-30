@@ -5,6 +5,8 @@ import cn from 'classnames';
 
 import { Input, Textarea, Form, Button } from '../../../shared';
 
+import type { IProfile } from '../../../types/Profile';
+
 import styles from './ProfileForm.module.scss';
 
 interface IProps {
@@ -15,7 +17,6 @@ interface IProps {
 export const ProfileForm = ({ formFields, isEdit }: IProps) => {
 	const formik = useFormik({
 		initialValues: {
-			checking: '',
 			name: formFields.name,
 			username: formFields.username,
 			email: formFields?.email,
@@ -27,30 +28,15 @@ export const ProfileForm = ({ formFields, isEdit }: IProps) => {
 			comment: '',
 		},
 		validationSchema: yup.object({
-			name: yup.string()
-				.min(3, "Длина поля должна быть не менее 3 символов")
-				.required("Поле обязательно для заполнения"),
-			username: yup.string()
-				.min(3, "Длина поля должна быть не менее 3 символов")
-				.required("Поле обязательно для заполнения"),
-			email: yup.string().email("Некорректный email").required("Поле обязательно для заполнения"),
-			street: yup.string()
-				.min(3, "Длина поля должна быть не менее 3 символов")
-				.required("Поле обязательно для заполнения"),
-			city: yup.string()
-				.min(3, "Длина поля должна быть не менее 3 символов")
-				.required("Поле обязательно для заполнения"),
-			zipcode: yup.string()
-				.min(3, "Длина поля должна быть не менее 3 символов")
-				.required("Поле обязательно для заполнения"),
-			phone: yup.string()
-				.min(5, "Длина поля должна быть не менее 5 символов")
-				.required("Поле обязательно для заполнения"),
-			website: yup.string()
-				.min(5, "Длина поля должна быть не менее 5 символов")
-				.required("Поле обязательно для заполнения"),
-			comment: yup.string()
-				.min(5, "Длина поля должна быть не менее 5 символов"),
+			name: yup.string().min(3).required(),
+			username: yup.string().min(3).required(),
+			email: yup.string().email().required(),
+			street: yup.string().min(3).required(),
+			city: yup.string().min(3).required(),
+			zipcode: yup.string().min(3).required(),
+			phone: yup.string().min(5).required(),
+			website: yup.string().min(5).required(),
+			comment: yup.string().min(5),
 		}),
 		onSubmit: (values, { resetForm }) => {
 			resetForm();
@@ -59,128 +45,120 @@ export const ProfileForm = ({ formFields, isEdit }: IProps) => {
 
 	return (
 		<>
-			<Form className={styles.ProfileForm}>
+			<Form className={styles.ProfileForm} formState={formik.values}>
 				<Input
 					className={cn(styles.ProfileForm__field,
-						{ [styles.ProfileForm__uneditableField]: isEdit })
+						{ [styles.ProfileForm__uneditableField]: isEdit },
+						{ [styles.ProfileForm__error]: formik.errors.name })
 					}
-					name="Name"
-					placeholder="name"
+					labelName="Name"
+					name="name"
 					onChange={formik.handleChange}
 					defaultValue={formik.values.name}
 					touched={formik.touched.name}
-					errors={formik.errors.name}
 					readOnly={isEdit}
 				/>
 
 				<Input
 					className={cn(styles.ProfileForm__field,
-						{ [styles.ProfileForm__uneditableField]: isEdit })
+						{ [styles.ProfileForm__uneditableField]: isEdit },
+						{ [styles.ProfileForm__error]: formik.errors.username })
 					}
-					name="Username"
-					placeholder="username"
+					labelName="Username"
+					name="username"
 					onChange={formik.handleChange}
 					defaultValue={formik.values.username}
 					touched={formik.touched.username}
-					errors={formik.errors.username}
 					readOnly={isEdit}
 				/>
 
 				<Input
 					className={cn(styles.ProfileForm__field,
-						{ [styles.ProfileForm__uneditableField]: isEdit })
+						{ [styles.ProfileForm__uneditableField]: isEdit },
+						{ [styles.ProfileForm__error]: formik.errors.email })
 					}
-					name="E-mail"
-					placeholder="email"
+					labelName="E-mail"
+					name="email"
 					onChange={formik.handleChange}
 					defaultValue={formik.values.email}
 					touched={formik.touched.email}
-					errors={formik.errors.email}
 					readOnly={isEdit}
 				/>
 
 				<Input
 					className={cn(styles.ProfileForm__field,
-						{ [styles.ProfileForm__uneditableField]: isEdit })
+						{ [styles.ProfileForm__uneditableField]: isEdit },
+						{ [styles.ProfileForm__error]: formik.errors.street })
 					}
-					name="Street"
-					placeholder="street"
+					labelName="Street"
+					name="street"
 					onChange={formik.handleChange}
 					defaultValue={formik.values.street}
-					errors={formik.errors.street}
 					readOnly={isEdit}
 				/>
 
 				<Input
 					className={cn(styles.ProfileForm__field,
-						{ [styles.ProfileForm__uneditableField]: isEdit })
+						{ [styles.ProfileForm__uneditableField]: isEdit },
+						{ [styles.ProfileForm__error]: formik.errors.city })
 					}
-					name="City"
-					placeholder="city"
+					labelName="City"
+					name="city"
 					onChange={formik.handleChange}
 					defaultValue={formik.values.city}
-					errors={formik.errors.city}
 					readOnly={isEdit}
 				/>
 
 				<Input
 					className={cn(styles.ProfileForm__field,
-						{ [styles.ProfileForm__uneditableField]: isEdit })
+						{ [styles.ProfileForm__uneditableField]: isEdit },
+						{ [styles.ProfileForm__error]: formik.errors.zipcode })
 					}
-					name="Zipcode"
-					placeholder="zipcode"
+					labelName="Zipcode"
+					name="zipcode"
 					onChange={formik.handleChange}
 					defaultValue={formik.values.zipcode}
-					errors={formik.errors.zipcode}
 					readOnly={isEdit}
 				/>
 
 				<Input
 					className={cn(styles.ProfileForm__field,
-						{ [styles.ProfileForm__uneditableField]: isEdit })
+						{ [styles.ProfileForm__uneditableField]: isEdit },
+						{ [styles.ProfileForm__error]: formik.errors.phone })
 					}
-					name="Phone"
-					placeholder="phone"
+					labelName="Phone"
+					name="phone"
 					onChange={formik.handleChange}
 					defaultValue={formik.values.phone}
 					touched={formik.touched.phone}
-					errors={formik.errors.phone}
 					readOnly={isEdit}
 				/>
 
 				<Input
 					className={cn(styles.ProfileForm__field,
-						{ [styles.ProfileForm__uneditableField]: isEdit })
+						{ [styles.ProfileForm__uneditableField]: isEdit },
+						{ [styles.ProfileForm__error]: formik.errors.website })
 					}
-					name="Website"
-					placeholder="website"
+					labelName="Website"
+					name="website"
 					onChange={formik.handleChange}
 					defaultValue={formik.values.website}
 					touched={formik.touched.website}
-					errors={formik.errors.website}
 					readOnly={isEdit}
 				/>
 
 				<Textarea
-					name="Comment"
+					name="comment"
 					readOnly={isEdit}
 				></Textarea>
-			</Form>
 
-			<Button className={cn(styles.ProfileForm__submit,
-				{ [styles.ProfileForm__inactiveSubmit]: isEdit })}>Отправить</Button>
+				<Button
+					className={cn(styles.ProfileForm__submit,
+						{ [styles.ProfileForm__inactiveSubmit]: isEdit })}
+					type='submit'
+					disabled={isEdit}
+				>Отправить</Button>
+			</Form>
 		</>
 	);
 };
-
-export interface IProfile {
-	name?: string;
-	username?: string;
-	email?: string;
-	street?: string;
-	city?: string;
-	zipcode?: string;
-	phone?: string;
-	website?: string;
-	comment?: string;
-}
