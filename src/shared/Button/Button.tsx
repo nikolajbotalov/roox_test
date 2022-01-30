@@ -1,5 +1,9 @@
 import React, { ButtonHTMLAttributes } from 'react';
 
-export const Button = ({ className, ...rest }: ButtonHTMLAttributes<HTMLButtonElement>) => {
-	return <button className={className} {...rest}></button>;
+interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+	onClick?: () => void;
+}
+
+export const Button = ({ className, onClick, ...rest }: IProps) => {
+	return <button className={className} {...rest} onClick={onClick}></button>;
 };

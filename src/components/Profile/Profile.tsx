@@ -11,6 +11,8 @@ interface IProps {
 }
 
 export const Profile = ({ profile, isLoading }: IProps) => {
+	const [isEdit, setIsEdit] = React.useState<boolean>(true);
+
 	let formFields = {
 		name: profile?.name,
 		username: profile?.username,
@@ -26,12 +28,12 @@ export const Profile = ({ profile, isLoading }: IProps) => {
 		<div className={styles.Profile}>
 			<div className={styles.Profile__header}>
 				<Title className={styles.Profile__title} text='Профиль пользователя' />
-				<Button className={styles.Profile__edit}>Редактировать</Button>
+				<Button className={styles.Profile__edit} onClick={() => setIsEdit(!isEdit)}>Редактировать</Button>
 			</div>
 
 			{isLoading
 				? <Loader />
-				: <ProfileForm className={styles.Profile__form} formFields={formFields} />
+				: <ProfileForm className={styles.Profile__form} formFields={formFields} isEdit={isEdit} />
 			}
 
 			<Button className={styles.Profile__submit}>Отправить</Button>

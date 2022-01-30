@@ -7,19 +7,21 @@ import { Input, Textarea, Form } from '../../../shared';
 interface IProps {
 	formFields: IProfile;
 	className: string;
+	isEdit: boolean;
 }
 
-export const ProfileForm = ({ formFields, className }: IProps) => {
+export const ProfileForm = ({ formFields, className, isEdit }: IProps) => {
 	const formik = useFormik({
 		initialValues: {
-			name: formFields?.name || '',
-			username: formFields?.username || '',
-			email: formFields?.email || '',
-			street: formFields?.street || '',
-			city: formFields?.city || '',
-			zipcode: formFields?.zipcode || '',
-			phone: formFields?.phone || '',
-			website: formFields?.website || '',
+			checking: '',
+			name: formFields.name,
+			username: formFields.username,
+			email: formFields?.email,
+			street: formFields?.street,
+			city: formFields?.city,
+			zipcode: formFields?.zipcode,
+			phone: formFields?.phone,
+			website: formFields?.website,
 			comment: '',
 		},
 		validationSchema: yup.object({
@@ -59,82 +61,82 @@ export const ProfileForm = ({ formFields, className }: IProps) => {
 				name="Name"
 				placeholder="name"
 				onChange={formik.handleChange}
-				value={formik.values.name}
+				defaultValue={formik.values.name}
 				touched={formik.touched.name}
 				errors={formik.errors.name}
-				readOnly
+				readOnly={isEdit}
 			/>
 
 			<Input
 				name="Username"
 				placeholder="username"
 				onChange={formik.handleChange}
-				value={formik.values.username}
+				defaultValue={formik.values.username}
 				touched={formik.touched.username}
 				errors={formik.errors.username}
-				readOnly
+				readOnly={isEdit}
 			/>
 
 			<Input
 				name="E-mail"
 				placeholder="email"
 				onChange={formik.handleChange}
-				value={formik.values.email}
+				defaultValue={formik.values.email}
 				touched={formik.touched.email}
 				errors={formik.errors.email}
-				readOnly
+				readOnly={isEdit}
 			/>
 
 			<Input
 				name="Street"
 				placeholder="street"
 				onChange={formik.handleChange}
-				value={formik.values.street}
+				defaultValue={formik.values.street}
 				errors={formik.errors.street}
-				readOnly
+				readOnly={isEdit}
 			/>
 
 			<Input
 				name="City"
 				placeholder="city"
 				onChange={formik.handleChange}
-				value={formik.values.city}
+				defaultValue={formik.values.city}
 				errors={formik.errors.city}
-				readOnly
+				readOnly={isEdit}
 			/>
 
 			<Input
 				name="Zipcode"
 				placeholder="zipcode"
 				onChange={formik.handleChange}
-				value={formik.values.zipcode}
+				defaultValue={formik.values.zipcode}
 				errors={formik.errors.zipcode}
-				readOnly
+				readOnly={isEdit}
 			/>
 
 			<Input
 				name="Phone"
 				placeholder="phone"
 				onChange={formik.handleChange}
-				value={formik.values.phone}
+				defaultValue={formik.values.phone}
 				touched={formik.touched.phone}
 				errors={formik.errors.phone}
-				readOnly
+				readOnly={isEdit}
 			/>
 
 			<Input
 				name="Website"
 				placeholder="website"
 				onChange={formik.handleChange}
-				value={formik.values.website}
+				defaultValue={formik.values.website}
 				touched={formik.touched.website}
 				errors={formik.errors.website}
-				readOnly
+				readOnly={isEdit}
 			/>
 
 			<Textarea
 				name="Comment"
-				readOnly
+				readOnly={isEdit}
 			></Textarea>
 		</Form>
 	);
