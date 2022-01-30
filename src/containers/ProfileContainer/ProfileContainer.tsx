@@ -4,6 +4,8 @@ import { fetchUserProfile } from '../../redux/reducers';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks/reduxHooks';
 import type { ICurrentProfile } from '../../types/CurrentProfile';
 
+import { Profile } from '../../components';
+
 interface IProps {
 	currentProfileOption: ICurrentProfile;
 }
@@ -16,5 +18,5 @@ export const ProfileContainer = ({ currentProfileOption }: IProps) => {
 		dispatch(fetchUserProfile({ userId: currentProfileOption.currentProfile }));
 	}, [dispatch, currentProfileOption.currentProfile])
 
-	return <div></div>;
+	return <Profile profile={profile} isLoading={isLoading} />;
 };

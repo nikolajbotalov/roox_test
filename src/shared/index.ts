@@ -3,3 +3,4 @@ export * from './Title';
 export * from './Loader';
 export * from './Input';
 export * from './Textarea';
+export * from './Form';
