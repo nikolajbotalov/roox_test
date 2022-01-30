@@ -1,16 +1,18 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import cn from 'classnames';
 
-import { Input, Textarea, Form } from '../../../shared';
+import { Input, Textarea, Form, Button } from '../../../shared';
+
+import styles from './ProfileForm.module.scss';
 
 interface IProps {
 	formFields: IProfile;
-	className: string;
 	isEdit: boolean;
 }
 
-export const ProfileForm = ({ formFields, className, isEdit }: IProps) => {
+export const ProfileForm = ({ formFields, isEdit }: IProps) => {
 	const formik = useFormik({
 		initialValues: {
 			checking: '',
@@ -56,89 +58,118 @@ export const ProfileForm = ({ formFields, className, isEdit }: IProps) => {
 	});
 
 	return (
-		<Form className={className}>
-			<Input
-				name="Name"
-				placeholder="name"
-				onChange={formik.handleChange}
-				defaultValue={formik.values.name}
-				touched={formik.touched.name}
-				errors={formik.errors.name}
-				readOnly={isEdit}
-			/>
+		<>
+			<Form className={styles.ProfileForm}>
+				<Input
+					className={cn(styles.ProfileForm__field,
+						{ [styles.ProfileForm__uneditableField]: isEdit })
+					}
+					name="Name"
+					placeholder="name"
+					onChange={formik.handleChange}
+					defaultValue={formik.values.name}
+					touched={formik.touched.name}
+					errors={formik.errors.name}
+					readOnly={isEdit}
+				/>
 
-			<Input
-				name="Username"
-				placeholder="username"
-				onChange={formik.handleChange}
-				defaultValue={formik.values.username}
-				touched={formik.touched.username}
-				errors={formik.errors.username}
-				readOnly={isEdit}
-			/>
+				<Input
+					className={cn(styles.ProfileForm__field,
+						{ [styles.ProfileForm__uneditableField]: isEdit })
+					}
+					name="Username"
+					placeholder="username"
+					onChange={formik.handleChange}
+					defaultValue={formik.values.username}
+					touched={formik.touched.username}
+					errors={formik.errors.username}
+					readOnly={isEdit}
+				/>
 
-			<Input
-				name="E-mail"
-				placeholder="email"
-				onChange={formik.handleChange}
-				defaultValue={formik.values.email}
-				touched={formik.touched.email}
-				errors={formik.errors.email}
-				readOnly={isEdit}
-			/>
+				<Input
+					className={cn(styles.ProfileForm__field,
+						{ [styles.ProfileForm__uneditableField]: isEdit })
+					}
+					name="E-mail"
+					placeholder="email"
+					onChange={formik.handleChange}
+					defaultValue={formik.values.email}
+					touched={formik.touched.email}
+					errors={formik.errors.email}
+					readOnly={isEdit}
+				/>
 
-			<Input
-				name="Street"
-				placeholder="street"
-				onChange={formik.handleChange}
-				defaultValue={formik.values.street}
-				errors={formik.errors.street}
-				readOnly={isEdit}
-			/>
+				<Input
+					className={cn(styles.ProfileForm__field,
+						{ [styles.ProfileForm__uneditableField]: isEdit })
+					}
+					name="Street"
+					placeholder="street"
+					onChange={formik.handleChange}
+					defaultValue={formik.values.street}
+					errors={formik.errors.street}
+					readOnly={isEdit}
+				/>
 
-			<Input
-				name="City"
-				placeholder="city"
-				onChange={formik.handleChange}
-				defaultValue={formik.values.city}
-				errors={formik.errors.city}
-				readOnly={isEdit}
-			/>
+				<Input
+					className={cn(styles.ProfileForm__field,
+						{ [styles.ProfileForm__uneditableField]: isEdit })
+					}
+					name="City"
+					placeholder="city"
+					onChange={formik.handleChange}
+					defaultValue={formik.values.city}
+					errors={formik.errors.city}
+					readOnly={isEdit}
+				/>
 
-			<Input
-				name="Zipcode"
-				placeholder="zipcode"
-				onChange={formik.handleChange}
-				defaultValue={formik.values.zipcode}
-				errors={formik.errors.zipcode}
-				readOnly={isEdit}
-			/>
+				<Input
+					className={cn(styles.ProfileForm__field,
+						{ [styles.ProfileForm__uneditableField]: isEdit })
+					}
+					name="Zipcode"
+					placeholder="zipcode"
+					onChange={formik.handleChange}
+					defaultValue={formik.values.zipcode}
+					errors={formik.errors.zipcode}
+					readOnly={isEdit}
+				/>
 
-			<Input
-				name="Phone"
-				placeholder="phone"
-				onChange={formik.handleChange}
-				defaultValue={formik.values.phone}
-				touched={formik.touched.phone}
-				errors={formik.errors.phone}
-				readOnly={isEdit}
-			/>
+				<Input
+					className={cn(styles.ProfileForm__field,
+						{ [styles.ProfileForm__uneditableField]: isEdit })
+					}
+					name="Phone"
+					placeholder="phone"
+					onChange={formik.handleChange}
+					defaultValue={formik.values.phone}
+					touched={formik.touched.phone}
+					errors={formik.errors.phone}
+					readOnly={isEdit}
+				/>
 
-			<Input
-				name="Website"
-				placeholder="website"
-				onChange={formik.handleChange}
-				defaultValue={formik.values.website}
-				touched={formik.touched.website}
-				errors={formik.errors.website}
-				readOnly={isEdit}
-			/>
+				<Input
+					className={cn(styles.ProfileForm__field,
+						{ [styles.ProfileForm__uneditableField]: isEdit })
+					}
+					name="Website"
+					placeholder="website"
+					onChange={formik.handleChange}
+					defaultValue={formik.values.website}
+					touched={formik.touched.website}
+					errors={formik.errors.website}
+					readOnly={isEdit}
+				/>
 
-			<Textarea
-				name="Comment"
-				readOnly={isEdit}
-			></Textarea>
-		</Form>
+				<Textarea
+					name="Comment"
+					readOnly={isEdit}
+				></Textarea>
+			</Form>
+
+			<Button className={cn(styles.ProfileForm__submit,
+				{ [styles.ProfileForm__inactiveSubmit]: isEdit })}>Отправить</Button>
+		</>
 	);
 };
 

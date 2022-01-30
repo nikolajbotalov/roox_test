@@ -33,10 +33,8 @@ export const Profile = ({ profile, isLoading }: IProps) => {
 
 			{isLoading
 				? <Loader />
-				: <ProfileForm className={styles.Profile__form} formFields={formFields} isEdit={isEdit} />
+				: <ProfileForm formFields={formFields} isEdit={isEdit} />
 			}
-
-			<Button className={styles.Profile__submit}>Отправить</Button>
 		</div>
 	);
 };
